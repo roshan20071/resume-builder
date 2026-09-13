@@ -76,61 +76,25 @@ flowchart TD
         N --> P["URL-Encoded Shareable Portfolio & QR"]
     end
 ```
-🛠️ Tech Stack
-Frontend: React, Tailwind CSS
+## 🛠️ Tech Stack
 
-Icons & Components: Lucide React, Headless UI / Radix Primitives
+* **Frontend Framework:** React, Tailwind CSS
+* **Icons & Primitives:** Lucide React, Radix UI / Headless UI
+* **State Management:** React Context / Zustand
+* **Document Engine:** HTML-to-PDF Print API, Custom Dynamic Line-Budget Calculator
+* **Data & Privacy:** 100% Client-Side In-Memory State & LocalStorage
 
-State Management: React Context / Zustand
+---
 
-Document Engine: HTML-to-PDF Print Engine, Custom Typography Auto-Fit Calculator
+## 🚀 Quick Start
 
-Privacy Model: 100% Client-Side In-Memory State & LocalStorage
+### Prerequisites
+* Node.js (v18.0.0 or higher)
+* npm, yarn, or pnpm
 
-🚀 Quick Start
-Prerequisites
-Node.js (v18.0.0 or higher)
+### Installation
 
-npm, yarn, or pnpm
-
-Installation
-Clone the repository:
-
-Bash
-git clone [https://github.com/roshan20071/resume-builder.git](https://github.com/roshan20071/resume-builder.git)
-cd resume-builder
-Install dependencies:
-
-Bash
-npm install
-Start local development server:
-
-Bash
-npm run dev
-Open your browser and navigate to:
-
-Plaintext
-http://localhost:5173
-📂 Directory Structure
-Plaintext
-resume-builder/
-├── public/                 # Static assets, template schemas, and fonts
-├── src/
-│   ├── components/         # Core UI modular components
-│   │   ├── editor/         # Section form editors (Experience, Projects, Education)
-│   │   ├── modals/         # AtsAuditor, JdMatcher, SetupWizard, ShareModal
-│   │   ├── preview/        # Resume artboard canvas & print CSS
-│   │   └── toolbar/        # Navigation, page budget indicators, action triggers
-│   ├── utils/              # Calculation & text processing engines
-│   │   ├── atsScorer.js    # Keyword extraction, verb weighting, metric scanner
-│   │   ├── autoFit.js      # Line budget and dynamic scaling calculations
-│   │   └── shareEncoder.js # Base64/Hash compression for web portfolio links
-│   ├── App.jsx             # Main orchestrator
-│   └── index.css           # Print media queries and Tailwind directives
-├── package.json
-└── README.md
-🔒 Privacy Architecture
-Apex operates with a strict Zero-Data Transmission policy. Resumes frequently contain highly sensitive personal information (phone numbers, personal emails, physical locations, compensation history). All parsing, keyword auditing, auto-fit budgeting, and export compilation occur entirely on the client machine.
-
-📄 License
-Distributed under the MIT License. See LICENSE for details.
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/roshan20071/resume-builder.git](https://github.com/roshan20071/resume-builder.git)
+   cd resume-builder
