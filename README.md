@@ -1,81 +1,83 @@
-# Dual-Engine Resume Builder 📄🚀
+# Apex Resume Builder 📄⚡
 
-An advanced, dual-engine resume builder built with **Next.js 15**, **React 19**, **TypeScript**, **Tailwind CSS**, and **Zustand**. Designed for maximum ATS (Applicant Tracking System) pass rates while offering sleek modern designs.
+> **ATS-Optimized Resume Engine, Real-Time Keyword Matcher & Executive Bullet Refactor Tool**
 
----
-
-## ✨ Key Features
-
-- 🎯 **Dual-Engine Architecture**: Seamlessly switch between ATS-compliant Classic Layouts and visually stunning Modern Designs.
-- 🤖 **ATS Parser Simulator & Score**: Real-time ATS parsing audit with instant scoring badges, sparklines, and actionable feedback.
-- ⚡ **Smart Bullet Optimization**: AI-assisted bullet point rewriter, verb strengthener, and interview bullet generator.
-- 📊 **Page Budgeting & Auto-Fit**: Interactive visual page budget bar to prevent messy overflow lines across page boundaries.
-- 💼 **Job Description (JD) Matcher**: Compare your resume against target job listings to identify keyword gaps.
-- 📥 **Flexible Imports**: Import data via PDF parsing, LinkedIn format, GitHub profiles, or raw plain text.
-- ✉️ **Cover Letter Generator**: Create contextual cover letters aligned directly with your resume content.
-- 🔄 **Version History & Slots**: Manage multiple resume variants and easily restore previous versions.
-- 📤 **Multi-Format Export**: Export clean print-ready PDFs, JSON data, and generate shareable online portfolio links with QR codes.
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![Build: Passing](https://img.shields.io/badge/Build-Passing-brightgreen.svg)
+![Engine: Client--Side](https://img.shields.io/badge/Privacy-100%25%20On--Device-success.svg)
+![Framework: React](https://img.shields.io/badge/Frontend-React%20%7C%20Tailwind-61DAFB.svg)
 
 ---
 
-## 🛠️ Tech Stack
+## 📌 Executive Summary
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **UI & Styling**: [React 19](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), [Lucide React](https://lucide.dev/)
-- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
-- **Validation**: [Zod](https://zod.dev/)
-- **PDF & Compression**: `pdfjs-dist`, `lz-string`, `qrcode.react`
+**Apex Resume Builder** is a modern, high-precision resume engineering tool built to help software engineers and tech professionals craft single-page, ATS-compliant resumes with real-time feedback. 
+
+Unlike generic document editors, Apex integrates real-time heuristic ATS scoring, job description keyword vector matching, bullet-point impact auditing (XYZ formula enforcement), and automated layout budget management—ensuring candidates pass initial automated screenings at enterprise recruitment pipelines.
 
 ---
 
-## 🚀 Getting Started
+## ⚡ Key Capabilities & Architecture
 
-### Prerequisites
+* **Deep ATS Health Auditor:**
+  * Real-time structural scanner benchmarked against Fortune 500 applicant tracking systems (Greenhouse, Workday, Lever).
+  * Automatically flags weak passive verbs (e.g., "Responsible for", "Worked on") and suggests executive power verbs.
+  * Audits metric density and quantifies achievement percentages across experience points.
 
-- [Node.js](https://nodejs.org/) (v18.18+ or v20+)
-- npm, pnpm, or yarn
+* **Targeted Job Description (JD) Keyword Matcher:**
+  * Ingests target job postings, extracts core technical keywords and competencies, and matches them against resume content.
+  * Surfaces missing technical competencies with one-click keyword injection into relevant skill categories.
 
-### Installation
+* **Single-Page Layout Budget Engine:**
+  * Real-time page capacity computation (98–100% tight budget indicator) that automatically calculates margins, gaps, line heights, and font scaling levels (L0 to L4) to guarantee single-page fit.
+  * Instant switching between standard **A4** and **US Letter** formatting.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/dual-engine-resume-builder.git
-   cd dual-engine-resume-builder
-   ```
+* **Modular Experience & Project Builders:**
+  * Drag-and-drop section reordering with real-time reactive markdown preview.
+  * Rapid setup wizard for fast onboarding and multi-role template presets (Full-Stack, AI/ML, DevOps, Product).
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+* **Private Shareable Web Portfolio Generation:**
+  * Generates an instant, client-encoded web portfolio URL (via URL hash state) and downloadable QR code without requiring a persistent database backend.
 
 ---
 
-## 📁 Project Structure
+## 🏗️ System Architecture
 
-```
-├── app/                  # Next.js App Router (pages, layout, styles)
-├── components/
-│   ├── editor/           # Form inputs, wizards, importers, optimizers
-│   └── preview/          # Resume canvas, templates, ATS simulators, export
-├── src/
-│   ├── hooks/            # Custom hooks (page budget, auto-fit)
-│   ├── schema/           # Zod data schemas
-│   ├── store/            # Zustand state management
-│   ├── styles/           # Design tokens & CSS variables
-│   ├── types/            # TypeScript definitions
-│   └── utils/            # ATS simulator, parsers, export helpers
-└── public/               # Static assets
-```
+```mermaid
+flowchart TD
+    subgraph INPUT["1. Content Input & Rapid Setup"]
+        A["User Input / Setup Wizard / JSON"] --> B["Section State Manager"]
+        C["Target Job Description"] --> D["JD Keyword Tokenizer"]
+    end
+
+    subgraph ENGINE["2. Heuristic Audit & Optimization Core"]
+        B --> E["ATS Structural Health Auditor"]
+        B --> F["XYZ Achievement Metric Scorer"]
+        D & B --> G["Cosine / Set Keyword Match Engine"]
+        
+        E --> H["Verb Strength & Metric Density Score"]
+        G --> I["Skill Gap & Missing Keywords Matrix"]
+    end
+
+    subgraph LAYOUT["3. Layout Budget & Typography Engine"]
+        B --> J["Content Height & Line Budget Calculator"]
+        J --> K{"Single-Page Limit Check"}
+        K -->|"Exceeds Budget"| L["Auto-Fit Dynamic Scaling (L0-L4)"]
+        K -->|"Within Budget"| M["Standard Typographic Mesh"]
+    end
+
+    subgraph OUTPUT["4. Output & Distribution Channels"]
+        L & M --> N["Live Desktop Artboard Preview"]
+        H & I --> N
+        N --> O["High-Precision PDF Export"]
+        N --> P["URL-Encoded Shareable Portfolio & QR"]
+    end
+
+    style INPUT fill:#18181b,stroke:#3f3f46,stroke-width:1px,color:#fafafa
+    style ENGINE fill:#18181b,stroke:#3f3f46,stroke-width:1px,color:#fafafa
+    style LAYOUT fill:#18181b,stroke:#3f3f46,stroke-width:1px,color:#fafafa
+    style OUTPUT fill:#18181b,stroke:#3f3f46,stroke-width:1px,color:#fafafa
+    style K fill:#27272a,stroke:#6366f1,stroke-width:1px,color:#fafafa
+    style N fill:#27272a,stroke:#10b981,stroke-width:1px,color:#fafafa
 
 ---
-
-## 📜 License
-
-MIT License. Feel free to use and customize for your own job search journey!
