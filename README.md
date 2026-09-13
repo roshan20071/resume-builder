@@ -45,39 +45,92 @@ Unlike generic document editors, Apex integrates real-time heuristic ATS scoring
 
 ```mermaid
 flowchart TD
-    subgraph INPUT["1. Content Input & Rapid Setup"]
+    subgraph S1["1. Content Input & Rapid Setup"]
         A["User Input / Setup Wizard / JSON"] --> B["Section State Manager"]
         C["Target Job Description"] --> D["JD Keyword Tokenizer"]
     end
 
-    subgraph ENGINE["2. Heuristic Audit & Optimization Core"]
+    subgraph S2["2. Heuristic Audit & Optimization Core"]
         B --> E["ATS Structural Health Auditor"]
         B --> F["XYZ Achievement Metric Scorer"]
-        D & B --> G["Cosine / Set Keyword Match Engine"]
+        B --> G["Cosine / Set Keyword Match Engine"]
+        D --> G
         
         E --> H["Verb Strength & Metric Density Score"]
         G --> I["Skill Gap & Missing Keywords Matrix"]
     end
 
-    subgraph LAYOUT["3. Layout Budget & Typography Engine"]
+    subgraph S3["3. Layout Budget & Typography Engine"]
         B --> J["Content Height & Line Budget Calculator"]
         J --> K{"Single-Page Limit Check"}
-        K -->|"Exceeds Budget"| L["Auto-Fit Dynamic Scaling (L0-L4)"]
-        K -->|"Within Budget"| M["Standard Typographic Mesh"]
+        K -->|Exceeds Budget| L["Auto-Fit Dynamic Scaling (L0-L4)"]
+        K -->|Within Budget| M["Standard Typographic Mesh"]
     end
 
-    subgraph OUTPUT["4. Output & Distribution Channels"]
-        L & M --> N["Live Desktop Artboard Preview"]
-        H & I --> N
+    subgraph S4["4. Output & Distribution Channels"]
+        L --> N["Live Desktop Artboard Preview"]
+        M --> N
+        H --> N
+        I --> N
         N --> O["High-Precision PDF Export"]
         N --> P["URL-Encoded Shareable Portfolio & QR"]
     end
+```
+🛠️ Tech Stack
+Frontend: React, Tailwind CSS
 
-    style INPUT fill:#18181b,stroke:#3f3f46,stroke-width:1px,color:#fafafa
-    style ENGINE fill:#18181b,stroke:#3f3f46,stroke-width:1px,color:#fafafa
-    style LAYOUT fill:#18181b,stroke:#3f3f46,stroke-width:1px,color:#fafafa
-    style OUTPUT fill:#18181b,stroke:#3f3f46,stroke-width:1px,color:#fafafa
-    style K fill:#27272a,stroke:#6366f1,stroke-width:1px,color:#fafafa
-    style N fill:#27272a,stroke:#10b981,stroke-width:1px,color:#fafafa
+Icons & Components: Lucide React, Headless UI / Radix Primitives
 
----
+State Management: React Context / Zustand
+
+Document Engine: HTML-to-PDF Print Engine, Custom Typography Auto-Fit Calculator
+
+Privacy Model: 100% Client-Side In-Memory State & LocalStorage
+
+🚀 Quick Start
+Prerequisites
+Node.js (v18.0.0 or higher)
+
+npm, yarn, or pnpm
+
+Installation
+Clone the repository:
+
+Bash
+git clone [https://github.com/roshan20071/resume-builder.git](https://github.com/roshan20071/resume-builder.git)
+cd resume-builder
+Install dependencies:
+
+Bash
+npm install
+Start local development server:
+
+Bash
+npm run dev
+Open your browser and navigate to:
+
+Plaintext
+http://localhost:5173
+📂 Directory Structure
+Plaintext
+resume-builder/
+├── public/                 # Static assets, template schemas, and fonts
+├── src/
+│   ├── components/         # Core UI modular components
+│   │   ├── editor/         # Section form editors (Experience, Projects, Education)
+│   │   ├── modals/         # AtsAuditor, JdMatcher, SetupWizard, ShareModal
+│   │   ├── preview/        # Resume artboard canvas & print CSS
+│   │   └── toolbar/        # Navigation, page budget indicators, action triggers
+│   ├── utils/              # Calculation & text processing engines
+│   │   ├── atsScorer.js    # Keyword extraction, verb weighting, metric scanner
+│   │   ├── autoFit.js      # Line budget and dynamic scaling calculations
+│   │   └── shareEncoder.js # Base64/Hash compression for web portfolio links
+│   ├── App.jsx             # Main orchestrator
+│   └── index.css           # Print media queries and Tailwind directives
+├── package.json
+└── README.md
+🔒 Privacy Architecture
+Apex operates with a strict Zero-Data Transmission policy. Resumes frequently contain highly sensitive personal information (phone numbers, personal emails, physical locations, compensation history). All parsing, keyword auditing, auto-fit budgeting, and export compilation occur entirely on the client machine.
+
+📄 License
+Distributed under the MIT License. See LICENSE for details.
