@@ -1,0 +1,263 @@
+/**
+ * Dual-Engine Single-Page Resume Builder
+ * Design Tokens, Dynamic Scaling Variables & Print Optimization Stylesheet (Phase 1)
+ */
+
+:root {
+  --resume-font-size: 10pt;
+  --resume-font-size-px: 13.33px;
+  --resume-line-height: 1.38;
+  --resume-padding: 18mm;
+  --resume-section-gap: 14px;
+  --resume-item-gap: 8px;
+  --resume-bullet-gap: 3px;
+  --resume-header-gap: 12px;
+  --resume-accent-color: #2563eb;
+}
+
+/* Page Canvas Containers */
+.resume-canvas-wrapper {
+  position: relative;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 
+    0 20px 40px -15px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
+  transition: box-shadow 0.2s ease-out;
+}
+
+.resume-canvas-wrapper:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.16),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.resume-canvas-a4 {
+  width: 794px;
+  min-height: 1123px;
+  max-width: 794px;
+}
+
+.resume-canvas-letter {
+  width: 816px;
+  min-height: 1056px;
+  max-width: 816px;
+}
+
+/* Dynamic CSS Variable Applied Styles */
+.resume-root {
+  font-size: var(--resume-font-size, 10pt);
+  line-height: var(--resume-line-height, 1.38);
+  padding: var(--resume-padding, 18mm);
+  box-sizing: border-box;
+  color: #111827;
+  background-color: #ffffff;
+}
+
+.resume-section {
+  margin-bottom: var(--resume-section-gap, 14px);
+}
+
+.resume-item {
+  margin-bottom: var(--resume-item-gap, 8px);
+}
+
+.resume-bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--resume-bullet-gap, 3px);
+}
+
+.resume-header {
+  margin-bottom: var(--resume-header-gap, 12px);
+}
+
+/* 5-Tier Scale Level Utility Classes for Tailwind */
+.resume-scale-level-0 {
+  --resume-font-size: 10.5pt;
+  --resume-line-height: 1.45;
+  --resume-padding: 20mm;
+  --resume-section-gap: 18px;
+  --resume-item-gap: 10px;
+  --resume-bullet-gap: 4px;
+  --resume-header-gap: 14px;
+}
+
+.resume-scale-level-1 {
+  --resume-font-size: 10pt;
+  --resume-line-height: 1.38;
+  --resume-padding: 18mm;
+  --resume-section-gap: 14px;
+  --resume-item-gap: 8px;
+  --resume-bullet-gap: 3px;
+  --resume-header-gap: 12px;
+}
+
+.resume-scale-level-2 {
+  --resume-font-size: 9.5pt;
+  --resume-line-height: 1.30;
+  --resume-padding: 15mm;
+  --resume-section-gap: 12px;
+  --resume-item-gap: 6px;
+  --resume-bullet-gap: 2px;
+  --resume-header-gap: 10px;
+}
+
+.resume-scale-level-3 {
+  --resume-font-size: 9.0pt;
+  --resume-line-height: 1.25;
+  --resume-padding: 13mm;
+  --resume-section-gap: 10px;
+  --resume-item-gap: 5px;
+  --resume-bullet-gap: 2px;
+  --resume-header-gap: 8px;
+}
+
+.resume-scale-level-4 {
+  --resume-font-size: 8.5pt;
+  --resume-line-height: 1.20;
+  --resume-padding: 10mm;
+  --resume-section-gap: 8px;
+  --resume-item-gap: 4px;
+  --resume-bullet-gap: 1px;
+  --resume-header-gap: 6px;
+}
+
+/* Visual Overflow Boundary Marker (Hidden during print) */
+.resume-overflow-indicator {
+  position: absolute;
+  left: -24px;
+  right: -24px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 50;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.resume-overflow-line {
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ef4444,
+    #ef4444 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+.resume-overflow-badge {
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
+}
+
+/* Native Pixel-Perfect Single-Page Vector PDF Print Styles */
+@media print {
+  @page {
+    size: auto;
+    margin: 0mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Completely hide all UI controls, app navigation, editors, buttons, ambient graphics and visual aids */
+  .no-print,
+  header.glass-nav,
+  nav,
+  aside,
+  button,
+  .resume-overflow-indicator,
+  .resume-overflow-boundary,
+  .ambient-lighting,
+  [data-no-print="true"] {
+    display: none !important;
+  }
+
+  /* Explicitly ensure the resume template profile header is always visible */
+  .resume-header,
+  header.resume-header {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Reset layout structure so parent containers expand and never clip */
+  body > div,
+  main,
+  section {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .resume-canvas-wrapper {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  .resume-printable-area {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+  }
+
+  .resume-root {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    background: #ffffff !important;
+  }
+
+  /* Prevent awkward page break splitting inside items */
+  .resume-section,
+  .resume-item {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
